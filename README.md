@@ -18,9 +18,11 @@ npm i -S netiam netiam-contrib-state
 netiam({plugins})
   .state({
     userModel: User,
-    map: {
-
-    }
+    map: [
+      {base: Component, state: UserComponent},
+      {base: Campaign, state: UserCampaign},
+      {base: Node, state: UserNode}
+    ]
   })
   .rest({model: User})
   .json()

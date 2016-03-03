@@ -1,7 +1,8 @@
 export default function({
   userModel,
-  idParam = 'user'} = {}) {
+  map: []} = {}) {
 
   return function(req, res) {
   }
+
 }
