@@ -1,0 +1,18 @@
+# dotiles
+.babelrc
+.codeclimate.yml
+.editorconfig
+.eslintignore
+.eslintrc
+.gitattributes
+.gitignore
+.npmignore
+.nvmrc
+.travis.yml
+
+# dirs
+bin/
+coverage/
+docs/
+test/
+src/

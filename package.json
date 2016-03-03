@@ -1,0 +1,65 @@
+{
+  "name": "netiam-contrib-state",
+  "description": "REST API library",
+  "main": "lib/state.js",
+  "scripts": {
+    "build": "./bin/build",
+    "clean": "./bin/clean",
+    "lint": "./bin/lint",
+    "start": "npm run watch",
+    "test": "npm run test:unit",
+    "test:debug": "DEBUG=netiam:* npm test",
+    "test:unit": "mocha",
+    "test:watch": "mocha --watch",
+    "test:coverage": "istanbul cover _mocha --report lcovonly -- -R spec",
+    "watch": "./bin/watch",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "dependencies": {
+    "bluebird": "^3.2.2",
+    "lodash": "^4.5.0",
+    "sequelize": "^3.17.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.2.0",
+    "babel-eslint": "^5.0.0",
+    "babel-preset-es2015-node5": "^1.1.2",
+    "body-parser": "^1.14.1",
+    "codeclimate-test-reporter": "0.3.1",
+    "continuation-local-storage": "^3.1.6",
+    "eslint": "2.2.0",
+    "express": "^4.13.4",
+    "istanbul": "0.4.2",
+    "jsonapi-validator": "^1.0.1",
+    "mocha": "^2.4.5",
+    "qs": "^6.1.0",
+    "semantic-release": "4.3.5",
+    "should": "^8.2.1",
+    "sqlite3": "^3.1.1",
+    "supertest": "1.2.0",
+    "uuid": "^2.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/netiam/contrib-state.git"
+  },
+  "keywords": [
+    "REST",
+    "RESTful",
+    "Microservice",
+    "Webservice",
+    "API",
+    "OData",
+    "Library"
+  ],
+  "author": "Hannes Moser <hannes@impossiblearts.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/netiam/contrib-state/issues"
+  },
+  "homepage": "https://github.com/netiam/contrib-state",
+  "engines": {
+    "node": ">=5",
+    "npm": ">=3"
+  }
+}
