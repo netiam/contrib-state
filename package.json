@@ -32,7 +32,6 @@
     "istanbul": "0.4.2",
     "jsonapi-validator": "^1.0.1",
     "mocha": "^2.4.5",
-    "qs": "^6.1.0",
     "semantic-release": "4.3.5",
     "should": "^8.2.1",
     "sqlite3": "^3.1.1",
