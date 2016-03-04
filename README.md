@@ -18,7 +18,6 @@ npm i -S netiam netiam-contrib-state
 netiam({plugins})
   .rest({model: User})
   .state.res({
-    userModel: User,
     map: [
       {
         base: Component,
