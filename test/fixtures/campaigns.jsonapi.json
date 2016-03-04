@@ -1,0 +1,94 @@
+{
+  "data": [
+    {
+      "id": "95601afb-8d60-482e-b98a-4ca3cada452d",
+      "type": "campaign",
+      "attributes": {
+        "name": "Salzburg City Rallye",
+        "createdAt": "2016-02-25T12:09:42.000Z",
+        "updatedAt": "2016-02-25T12:09:42.000Z"
+      },
+      "relationships": {
+        "nodes": {
+          "data": [
+            {
+              "id": "054606ac-d108-41ce-97ea-43bec0f37ea1",
+              "type": "node"
+            },
+            {
+              "id": "1eb21add-f7df-4641-8913-29cd19320595",
+              "type": "node"
+            },
+            {
+              "id": "33bb8fa0-af8f-4ec1-8c97-6d387badfa60",
+              "type": "node"
+            },
+            {
+              "id": "46cd0434-c6f8-4b77-8cd8-32e099638548",
+              "type": "node"
+            },
+            {
+              "id": "83bb5619-df2a-4f69-b611-4ae7d63690fb",
+              "type": "node"
+            },
+            {
+              "id": "84641351-1080-4519-883a-972add8a000c",
+              "type": "node"
+            },
+            {
+              "id": "919796e7-43d0-4af7-be5c-d7f6a38c7f9b",
+              "type": "node"
+            },
+            {
+              "id": "b35ac084-0b35-4cf3-a5cf-95389c5fb9b8",
+              "type": "node"
+            },
+            {
+              "id": "bb5b45bb-45b9-4e91-aeb4-b34c85450dc9",
+              "type": "node"
+            },
+            {
+              "id": "d2a545d8-ec9a-4bd2-8b29-b824cff50be0",
+              "type": "node"
+            },
+            {
+              "id": "dedcbef3-2591-4fd5-b29a-7e519e8f4440",
+              "type": "node"
+            }
+          ]
+        },
+        "start": {
+          "data": {
+            "id": "1eb21add-f7df-4641-8913-29cd19320595",
+            "type": "node"
+          }
+        },
+        "project": {
+          "data": {
+            "id": "2425778d-9e3f-48e2-8511-9be9a8ee249d",
+            "type": "project"
+          }
+        },
+        "owner": {
+          "data": {
+            "id": "50c24ff3-4553-468a-89ae-ca5302ad5413",
+            "type": "user"
+          }
+        },
+        "users": {
+          "data": [
+            {
+              "id": "50c24ff3-4553-468a-89ae-ca5302ad5413",
+              "type": "user"
+            },
+            {
+              "id": "f4adcc82-0600-4d0e-9f16-ac4003794337",
+              "type": "user"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "included": []
+}
