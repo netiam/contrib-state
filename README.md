@@ -19,9 +19,9 @@ netiam({plugins})
   .state({
     userModel: User,
     map: [
-      {base: Component, state: UserComponent},
-      {base: Campaign, state: UserCampaign},
-      {base: Node, state: UserNode}
+      {base: Component, state: UserComponent, baseField: 'componentId', userField: 'owner'},
+      {base: Campaign, state: UserCampaign, baseField: 'campaignId', userField: 'owner'},
+      {base: Node, state: UserNode, baseField: 'nodeId', userField: 'owner'}
     ]
   })
   .rest({model: User})
