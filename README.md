@@ -16,15 +16,30 @@ npm i -S netiam netiam-contrib-state
 
 ```js
 netiam({plugins})
-  .state({
+  .rest({model: User})
+  .state.res({
     userModel: User,
     map: [
-      {base: Component, state: UserComponent, baseField: 'componentId', userField: 'owner'},
-      {base: Campaign, state: UserCampaign, baseField: 'campaignId', userField: 'owner'},
-      {base: Node, state: UserNode, baseField: 'nodeId', userField: 'owner'}
+      {
+        base: Component,
+        state: UserComponent,
+        baseField: 'componentId',
+        userField: 'owner'
+      },
+      {
+        base: Campaign,
+        state: UserCampaign,
+        baseField: 'campaignId',
+        userField: 'owner'
+      },
+      {
+        base: Node,
+        state: UserNode,
+        baseField: 'nodeId',
+        userField: 'owner'
+      }
     ]
   })
-  .rest({model: User})
   .json()
 ```
 
