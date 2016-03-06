@@ -21,7 +21,7 @@ function models(map) {
   })
 }
 
-function typeMap(user, documents, table) {
+function typeMap(userId, documents, table) {
   const types = {}
   if (!_.isArray(documents) && _.isObject(documents)) {
     documents = [documents]
@@ -51,7 +51,7 @@ function typeMap(user, documents, table) {
         original: document.attributes,
         query: {
           [table.base[document.type].baseField]: document.id,
-          [table.base[document.type].userField]: user.id
+          [table.base[document.type].userField]: userId
         }
       }
     }
@@ -82,7 +82,7 @@ function res({
   const table = models(map)
 
   return function(req, res) {
-    const map = typeMap(req.user, res.body.data, table)
+    const map = typeMap(req.params[userParam], res.body.data, table)
     const list = []
     _.forEach(map, type => _.forEach(type, id => {
       const p = id.model

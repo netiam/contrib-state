@@ -59,7 +59,7 @@ describe('netiam', () => {
     })
 
     it('should fetch campaign enriched with state', done => {
-      const req = {user: {id: '50c24ff3-4553-468a-89ae-ca5302ad5413'}}
+      const req = {params: {user: '50c24ff3-4553-468a-89ae-ca5302ad5413'}}
       const res = {body: campaignsFixture}
       const plugin = state.res({map})
       plugin(req, res)
