@@ -13,6 +13,7 @@ import UserCampaign from './models/user/campaign'
 import state from '../src/state'
 import campaignFixture from './fixtures/campaign.json'
 import campaignsFixture from './fixtures/campaigns.jsonapi.json'
+import nodeFixture from './fixtures/node.json'
 import userFixture from './fixtures/user.json'
 
 const map = [
@@ -44,12 +45,20 @@ describe('netiam', () => {
         .catch(done)
     })
 
+    it('should create a node', done => {
+      Node
+        .create(nodeFixture)
+        .then(() => done())
+        .catch(done)
+    })
+
     it('should create a user-campaign', done => {
       UserCampaign
         .create({
           score: 10,
           baseId: '95601afb-8d60-482e-b98a-4ca3cada452d',
-          ownerId: '50c24ff3-4553-468a-89ae-ca5302ad5413'
+          ownerId: '50c24ff3-4553-468a-89ae-ca5302ad5413',
+          currentId: 'd42e1623-89c3-4c89-ab80-8a6c6988cbad'
         })
         .then(() => done())
         .catch(err => {

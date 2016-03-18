@@ -1,5 +1,6 @@
 import Sequelize from 'sequelize'
 import Campaign from '../campaign'
+import Node from '../node'
 import User from '../user'
 import {db} from '../../utils/db'
 
@@ -26,5 +27,6 @@ const UserCampaign = db.define('UserCampaign', {
 
 UserCampaign.belongsTo(Campaign, {as: 'base'})
 UserCampaign.belongsTo(User, {as: 'owner'})
+UserCampaign.belongsTo(Node, {as: 'current'})
 
 export default UserCampaign
