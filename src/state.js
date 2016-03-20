@@ -116,7 +116,8 @@ function req({
   return function(req) {
     const map = typeMap(req.params[userParam], req.body.data, table)
     const list = []
-    // TODO filter state properties from req.body to avoid issues with REST plugin
+    // TODO add support for all association types
+    // TODO optimize query statements and filters
     _.forEach(map, type => _.forEach(type, id => {
       const p = id.model
         .findOne({where: id.query})
@@ -163,6 +164,8 @@ function res({
   return function(req, res) {
     const map = typeMap(req.params[userParam], res.body.data, table)
     const list = []
+    // TODO add support for all association types
+    // TODO optimize query statements and filters
     _.forEach(map, type => _.forEach(type, id => {
       const p = id.model
         .findOne({where: id.query})
