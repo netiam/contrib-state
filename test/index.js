@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import util from 'util'
 import {
   setup,
@@ -80,9 +81,39 @@ describe('netiam', () => {
             'name',
             'createdAt',
             'updatedAt',
-            'id',
             'score'
           ])
+          res.body.data[0].attributes.should.not.have.properties([
+            'id',
+            'baseId',
+            'ownerId'
+          ])
+        })
+        .then(() => done())
+        .catch(done)
+    })
+
+    it('should modify campaign state', done => {
+      const campaign = _.cloneDeep(campaignsFixture.data[0])
+      campaign.attributes.score = 101
+      const req = {
+        params: {user: '50c24ff3-4553-468a-89ae-ca5302ad5413'},
+        body: {data: campaign}
+      }
+      const res = {body: {data: campaign}}
+      const plugin = state.req({map})
+      plugin(req, res)
+        .then(() => {
+          res.body.should.have.property('data')
+          res.body.data.should.be.Object()
+          res.body.data.should.have.property('attributes')
+          res.body.data.attributes.should.have.properties([
+            'name',
+            'createdAt',
+            'updatedAt',
+            'score'
+          ])
+          res.body.data.attributes.score.should.eql(101)
         })
         .then(() => done())
         .catch(done)

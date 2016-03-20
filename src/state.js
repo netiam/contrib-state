@@ -105,6 +105,7 @@ export function setRelationship(model, document, path, resourceIdentifiers) {
 }
 
 function req({
+  idField = 'id',
   userParam = 'user',
   map = []} = {}) {
 
@@ -121,7 +122,10 @@ function req({
         .findOne({where: id.query})
         .then(document => document ? document : id.model.create(id.query))
         .then(document => {
-          const attributeKeys = _.keys(id.model.attributes)
+          // TODO configure idField
+          const foreignKeys = _.keys(id.query)
+          const excludeKeys = [idField, ...foreignKeys]
+          const attributeKeys = _.without(_.keys(id.model.attributes), excludeKeys)
           const attributes = _.pick(id.original, attributeKeys)
 
           return document.update(attributes)
@@ -148,6 +152,7 @@ function req({
 }
 
 function res({
+  idField = 'id',
   userParam = 'user',
   map = []} = {}) {
 
@@ -166,7 +171,7 @@ function res({
             return
           }
           document = document.toJSON()
-          const keys = _.map(id.model.associations, association => association.foreignKey)
+          const associationKeys = _.map(id.model.associations, association => association.foreignKey)
           const idKeys = _.keys(id.query)
           // TODO fetch state associations
           _.forEach(id.model.associations, (association, associationName) => {
@@ -188,8 +193,10 @@ function res({
             }
           })
 
-          const exclude = _.without(keys, ...idKeys)
-          const state = _.omit(document, exclude)
+          const foreignKeys = _.keys(id.query)
+          const excludeKeys = [idField, ...foreignKeys, ...associationKeys]
+          const attributeKeys = _.without(_.keys(id.model.attributes), ...excludeKeys)
+          const state = _.pick(document, attributeKeys)
           _.merge(id.original, state)
         })
       list.push(p)
