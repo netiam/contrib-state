@@ -200,6 +200,7 @@ function res({
     _.forEach(map, type => _.forEach(type, id => {
       const p = id.model
         .findOne({where: id.query})
+        .then(document => document ? document : id.model.create(id.query))
         .then(document => {
           if (!document) {
             return
