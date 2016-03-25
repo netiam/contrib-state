@@ -21,17 +21,48 @@ function models(map) {
   })
 }
 
-function typeMap(userId, documents, table) {
+function typeMap(userId, documents, included, table) {
   const types = {}
   if (!_.isArray(documents) && _.isObject(documents)) {
     documents = [documents]
   }
 
   if (!_.isArray(documents)) {
-    throw new Error('Wrong type "documents".')
+    throw new Error('Wrong type for parameter "documents".')
+  }
+
+  if (!_.isArray(included)) {
+    included = []
   }
 
   _.forEach(documents, document => {
+    const type = _.get(table.base, document.type, false)
+    if (!type) {
+      return
+    }
+
+    if (!_.isObject(types[document.type])) {
+      types[document.type] = {}
+    }
+
+    if (!_.has(types[document.type], document.id)) {
+      if (!_.has(document, 'attributes')) {
+        document.attributes = {}
+      }
+
+      types[document.type][document.id] = {
+        model: table.base[document.type].model,
+        original: document.attributes,
+        relationships: document.relationships,
+        query: {
+          [table.base[document.type].baseField]: document.id,
+          [table.base[document.type].userField]: userId
+        }
+      }
+    }
+  })
+
+  _.forEach(included, document => {
     const type = _.get(table.base, document.type, false)
     if (!type) {
       return
@@ -114,7 +145,7 @@ function req({
   const table = models(map)
 
   return function(req) {
-    const map = typeMap(req.params[userParam], req.body.data, table)
+    const map = typeMap(req.params[userParam], req.body.data, [], table)
     const list = []
     // TODO add support for all association types
     // TODO optimize query statements and filters
@@ -162,7 +193,7 @@ function res({
   const table = models(map)
 
   return function(req, res) {
-    const map = typeMap(req.params[userParam], res.body.data, table)
+    const map = typeMap(req.params[userParam], res.body.data, res.body.included, table)
     const list = []
     // TODO add support for all association types
     // TODO optimize query statements and filters
