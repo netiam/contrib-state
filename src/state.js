@@ -186,6 +186,7 @@ function req({
 function res({
   idField = 'id',
   userParam = 'user',
+  lazy = true,
   map = []} = {}) {
 
   assert.ok(userParam)
@@ -200,7 +201,7 @@ function res({
     _.forEach(map, type => _.forEach(type, id => {
       const p = id.model
         .findOne({where: id.query})
-        .then(document => document ? document : id.model.create(id.query))
+        .then(document => !document && !lazy ? id.model.create(id.query) : document)
         .then(document => {
           if (!document) {
             return
