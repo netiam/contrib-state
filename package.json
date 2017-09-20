@@ -31,7 +31,7 @@
     "express": "^4.13.4",
     "istanbul": "0.4.5",
     "mocha": "^3.2.0",
-    "semantic-release": "6.3.6",
+    "semantic-release": "7.0.1",
     "should": "^11.1.1",
     "sqlite3": "^3.1.1",
     "supertest": "2.0.1",
